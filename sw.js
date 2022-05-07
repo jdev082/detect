@@ -8,7 +8,7 @@ const ASSETS = [
     "sw.js"
 ]; 
 
-let cache_name = "cacheName";
+let CACHE_NAME = "cacheName";
 self.addEventListener("install", event => {
     console.log("installing...");
     event.waitUntil(
@@ -22,6 +22,17 @@ self.addEventListener("install", event => {
 });
 
 /* Source https://packager.turbowarp.org/sw.js, TurboWarp project */
+self.addEventListener('install', event => {
+  self.skipWaiting();
+  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS.map(i => i === '' ? base : i))));
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(keys.filter(i => i !== CACHE_NAME).map(i => caches.delete(i))))
+  );
+});
+
 const fetchWithTimeout = (req) => new Promise((resolve, reject) => {
     const timeout = setTimeout(reject, 5000);
     fetch(req)
@@ -54,12 +65,5 @@ const fetchWithTimeout = (req) => new Promise((resolve, reject) => {
       }
     }
   });
+  
 /* End of borrowed source */
-
-self.addEventListener('install', (e) => {
-    console.log('[Service Worker] Install');
-  });
-
-self.addEventListener('activate', (e) => {
-    console.log('[Service Worker] Activate');
-});
