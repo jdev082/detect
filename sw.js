@@ -1,7 +1,6 @@
 
 const ASSETS = [
     "/js/global.js",
-    "/",
     "/index.html",
     "favicon.png",
     "/css/style.css",
