@@ -9,6 +9,7 @@
     <link rel="icon" type="image/png" href="./favicon.png">
     <link rel="manifest" href="manifest.json">
 </head>
+<div class="bg-red-500 hidden"></div>
 <body style="background: url(https://jdev.eu.org/old/img/bg.svg)">
     <div class="p-3 rounded-lg m-3 bg-gray-800">
         <button onClick="save()" class="bg-blue-700 text-white px-5 p-3 rounded-lg">Save</button>
@@ -21,8 +22,15 @@
             <hr class="m-3">
             <p id="browser" class="text-white text-4xl">Browser</p>
         </div> 
-        <div class="bg-gray-700 hidden text-white p-3 m-3 rounded-lg">
-            <h1 id="lastBrowser" class="text-3xl">List</h1>
+        <div class="bg-gray-700 flex space-x-2 text-white p-3 m-3 rounded-lg">
+            <div id="supportBGBLUR" class="flex-col flex justify-between bg-green-600 w-fit h-32 p-1 rounded-lg">
+                <h1 class="text-3xl">Backdrop Blur</h1>
+                <p class="text-white rounded-lg p-3 bg-black/60">Support for backdrop</p>
+            </div>
+            <div id="supportJS" class="flex-col flex justify-between bg-red-500 w-fit h-32 p-1 rounded-lg">
+                <h1 class="text-3xl">JavaScript</h1>
+                <p class="text-white rounded-lg p-3 bg-black/60">Support for JavaScript</p>
+            </div>
         </div>
     </div>
     <div class="fixed bg-gray-700 w-full text-center bottom-0 text-white">

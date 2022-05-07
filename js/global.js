@@ -11,6 +11,14 @@ elem.innerHTML = "Operating System: " + os;
 var browser = ua.match(/chrome|firefox|opera|safari/);
 elem = document.querySelector('#browser');
 elem.innerHTML = "Browser: " + browser;
+if (browser == "chrome" || browser == "safari") {
+} else {
+    document.querySelector('#supportBGBLUR').classList.remove('bg-green-500');
+    document.querySelector('#supportBGBLUR').classList.add('bg-red-500');
+}
+
+document.querySelector('#supportJS').classList.remove('bg-red-500');
+document.querySelector('#supportJS').classList.add('bg-green-600');
 
 function save() {
     localStorage.setItem('lastUa', ua);
