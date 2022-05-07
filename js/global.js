@@ -55,7 +55,13 @@ function importData() {
 elem = document.querySelector('#lastBrowser');
 elem.innerHTML = "Last Browser: " + localStorage.getItem('lastBrowser') + '<br> Last OS: ' + localStorage.getItem('lastOs') + '<br> Last UA: ' + localStorage.getItem('lastUa');
 
-if('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
-  };
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js', {
+        scope: '.'
+    }).then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
   

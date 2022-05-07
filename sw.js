@@ -1,3 +1,12 @@
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js', {
+        scope: '.'
+    }).then(function(registration) {
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+        console.log('ServiceWorker registration failed: ', err);
+    });
+}
 
 const ASSETS = [
     "/js/global.js",
@@ -29,13 +38,3 @@ self.addEventListener('install', (e) => {
 self.addEventListener('activate', (e) => {
     console.log('[Service Worker] Activate');
 });
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js', {
-        scope: '.'
-    }).then(function(registration) {
-        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-    }, function(err) {
-        console.log('ServiceWorker registration failed: ', err);
-    });
-}
