@@ -21,6 +21,41 @@ self.addEventListener("install", event => {
     );
 });
 
+/* Source https://packager.turbowarp.org/sw.js, TurboWarp project */
+const fetchWithTimeout = (req) => new Promise((resolve, reject) => {
+    const timeout = setTimeout(reject, 5000);
+    fetch(req)
+      .then((res) => {
+        clearTimeout(timeout);
+        resolve(res);
+      })
+      .catch((err) => {
+        clearTimeout(timeout);
+        reject(err);
+      });
+  });
+  
+  self.addEventListener('fetch', event => {
+    if (event.request.method !== 'GET') return;
+    const url = new URL(event.request.url);
+    if (url.origin !== location.origin) return;
+    const relativePathname = url.pathname.substr(base.length);
+    if (IS_PRODUCTION && ASSETS.includes(relativePathname)) {
+      url.search = '';
+      const immutable = !!relativePathname;
+      if (immutable) {
+        event.respondWith(
+          caches.match(new Request(url)).then((res) => res || fetch(event.request))
+        );
+      } else {
+        event.respondWith(
+          fetchWithTimeout(event.request).catch(() => caches.match(new Request(url)))
+        );
+      }
+    }
+  });
+/* End of borrowed source */
+
 self.addEventListener('install', (e) => {
     console.log('[Service Worker] Install');
   });

@@ -12,7 +12,7 @@ var browser = ua.match(/chrome|firefox|opera|safari/);
 elem = document.querySelector('#browser');
 elem.innerHTML = "Browser: " + browser;
 
-function saveData() {
+function save() {
     localStorage.setItem('lastUa', ua);
     localStorage.setItem('lastOs', os);
     localStorage.setItem('lastBrowser', browser);
