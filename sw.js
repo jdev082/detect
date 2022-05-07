@@ -14,20 +14,9 @@ const ASSETS = [
     "/css/style.css"
 ];
 
-let cache_name = "application";
-
-self.addEventListener("fetch", event => {
-    if (event.request.url === "https://jdev.eu.org/detect") {
-        event.respondWith(
-            fetch(event.request).catch(err =>
-                self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
-            )
-        );
-    } else {
-        event.respondWith(
-            fetch(event.request).catch(err =>
-                caches.match(event.request).then(response => response)
-            )
-        );
+self.addEventListener('fetch', (e) => {
+    if (ASSETS.includes(e.request.url)) {
+        e.respondWith(fetch(e.request));
     }
-});
+}
+);
