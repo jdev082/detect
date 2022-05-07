@@ -1,10 +1,10 @@
 const ASSETS = [
-  "/detect/js/global.js",
-  "/detect/index.html",
-  "/detect/favicon.png",
-  "/detect/css/style.css",
-  "/detect/manifest.json",
-  "/detect/sw.js"
+  "/js/global.js",
+  "/index.html",
+  "/favicon.png",
+  "/css/style.css",
+  "/manifest.json",
+  "/sw.js"
 ]; 
 
 let cache_name = "cacheName";
