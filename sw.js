@@ -14,10 +14,10 @@ const ASSETS = [
     "/css/style.css"
 ];
 
-let cache_name = "application"; // The string used to identify our cache
+let cache_name = "application";
 
 self.addEventListener("fetch", event => {
-    if (event.request.url === "https://jdev.eu.org/deteect") {
+    if (event.request.url === "https://jdev.eu.org/detect") {
         event.respondWith(
             fetch(event.request).catch(err =>
                 self.cache.open(cache_name).then(cache => cache.match("/offline.html"))
