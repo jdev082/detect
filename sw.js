@@ -9,11 +9,11 @@ self.addEventListener('install', (e) => {
 
 const cacheName = 'cache';
 const appShellFiles = [
-  '/',
-  '/index.html',
-  '/js/global.js',
-  'favicon.png',
-  'css/style.css'
+  '/detect',
+  '/detect/index.html',
+  '/detect/js/global.js',
+  '/detect/favicon.png',
+  '/detect/css/style.css'
 ];
 
 self.addEventListener('fetch', (e) => {
