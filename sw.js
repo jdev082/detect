@@ -5,7 +5,6 @@ const ASSETS = [
     "favicon.png",
     "/css/style.css",
     "manifest.json",
-    "sw.js"
 ]; 
 
 let CACHE_NAME = "cacheName";
