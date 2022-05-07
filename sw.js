@@ -14,6 +14,8 @@ const ASSETS = [
     "/css/style.css"
 ];
 
+let cache_name = "application"; // The string used to identify our cache
+
 self.addEventListener("fetch", event => {
     if (event.request.url === "https://jdev.eu.org/deteect") {
         event.respondWith(
