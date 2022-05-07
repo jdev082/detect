@@ -64,8 +64,8 @@ elem = document.querySelector('#lastBrowser');
 elem.innerHTML = "Last Browser: " + localStorage.getItem('lastBrowser') + '<br> Last OS: ' + localStorage.getItem('lastOs') + '<br> Last UA: ' + localStorage.getItem('lastUa');
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/detect/sw.js', {
-        scope: '/detect'
+    navigator.serviceWorker.register('sw.js', {
+        scope: '.'
     }).then(function(registration) {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
