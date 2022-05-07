@@ -57,7 +57,7 @@ elem.innerHTML = "Last Browser: " + localStorage.getItem('lastBrowser') + '<br> 
 
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js', {
-        scope: '.'
+        scope: '/detect'
     }).then(function(registration) {
         console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
