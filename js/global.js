@@ -11,7 +11,7 @@ elem.innerHTML = "Operating System: " + os;
 var browser = ua.match(/chrome|firefox|opera|safari/);
 elem = document.querySelector('#browser');
 elem.innerHTML = "Browser: " + browser;
-if (browser == "chrome" || browser == "safari") {
+if (browser == "chrome" || browser == "safari" || browser == "firefox") {
 } else {
     document.querySelector('#supportBGBLUR').classList.remove('bg-green-500');
     document.querySelector('#supportBGBLUR').classList.add('bg-red-500');
